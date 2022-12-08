@@ -1,7 +1,7 @@
 const mathOperIn = document.querySelector("#math-operation-input")
 const mathOperOut = document.querySelector("#math-operation-output")
 const debugJson = document.querySelector("#debug-json")
-const disallowedChars = new RegExp(/[^\d-+/\\()*^ ]/g)
+const disallowedChars = new RegExp(/[^x\d-+/\\()*^ ]/g)
 const consecutiveOperators = new RegExp(/[-+/\\*^][-+/*^]|\+ \+|\/ \/|\* \*|\^ \^|\\ \\|  |\d \d|\(\)\(\)|\(\)\(\)/g)
 const splitterChars = new RegExp(/ +|\+/)
 const operators = [ "+", "-", "=", "*", "/", "^", "\\" ]
@@ -51,7 +51,7 @@ mathOperIn.addEventListener("input", (event) => {
 				throw Error(errorMessages.numberTooBig)
 			}
 
-			// debugJson.textContent = "Debug"
+			debugJson.textContent = "Debug"
 			debugJson.textContent = JSON.stringify(operationObject)
 
 			mathOperOut.textContent = interperter(operationObject)
